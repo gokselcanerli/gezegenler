@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ME-005 — Gezegen Tespit Sistemi · Diyez V1</title>
+<title>ME-005 — Gezegen Tespit Sistemi · Diyez Parametrik</title>
 <style>
 :root{--cyan:#16cfff;--green:#39c982;--active-stone:#ff9f1c;--active-soft:#ffd166}
 *{box-sizing:border-box} body{margin:0;min-height:100vh;display:grid;place-items:center;background:#dfe3e8;font-family:Arial,sans-serif}
@@ -14,7 +14,7 @@
 .n5{left:24.4%;width:5.6%} .n3{left:33.3%;width:5.6%} .n1{left:42.2%;width:5.6%} .n4{left:58.6%;width:5.6%} .n2{left:67.5%;width:5.6%}
 .face-tag{position:absolute;top:33.2%;transform:translateX(-50%);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;pointer-events:none;transition:.3s;background:#bbb;color:#fff;opacity:.52}
 .face-tag.active{background:var(--green);opacity:1;box-shadow:0 0 10px #39c982aa;transform:translateX(-50%) scale(1.08)}
-.tag-b{left:15.0%} .tag-c{left:20.0%} .tag-e{left:50.5%} .tag-f{left:55.7%}
+.tag-e{left:15.0%} .tag-f{left:20.0%} .tag-b{left:50.5%} .tag-c{left:55.7%}
 .awake-person{transition:filter .3s,opacity .3s} .wake-pop{animation:wakePop .55s ease both}
 .status{margin-top:12px;min-height:58px;padding:12px 16px;border-radius:14px;background:#fff;box-shadow:0 4px 16px #0002;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:700}
 .status span{color:#075f8e} .hint{font-weight:500;color:#555;font-size:.92em;margin-left:8px} .reset{border:0;padding:9px 14px;border-radius:10px;background:#222;color:#fff;cursor:pointer;font-weight:700}
@@ -8006,35 +8006,7 @@
          sodipodi:role="line"
          id="tspan52"
          x="216.8454"
-         y="315.89825">SOL   RE   LA   Mİ   Sİ</tspan></text><g
-       id="svg20-5"
-       transform="matrix(0.31995199,0,0,0.26145182,291.12305,226.9007)"><path
-         class="KeySig"
-         d="m 88.772287,50.243484 17.837443,-1.61944 v 14.86346 l -17.837443,1.71197 v -14.95599 m 31.062683,-2.7898 c 1.19844,-0.0898 2.2032,-0.72398 2.2032,-1.26289 v -5.31557 c 0,-0.71854 -1.2045,-1.26017 -2.80847,-1.26017 h -0.39948 l -6.6096,0.63145 v -13.42366 h -5.61089 v 13.96256 l -17.837443,1.61944 v -12.69695 h -5.60484 v 13.2413 l -7.81409,0.71854 c -1.19844,0.0898 -2.2032,0.72127 -2.2032,1.26562 v 5.22031 c 0,0.72398 1.2045,1.26289 2.80848,1.26289 h 0.59922 l 6.60959,-0.62873 v 14.86346 l -7.81409,0.71855 c -1.19844,0.0898 -2.2032,0.72398 -2.2032,1.26289 v 5.22303 c 0,0.72398 1.2045,1.26289 2.80848,1.26289 h 0.59922 l 6.60959,-0.62872 v 13.42093 h 5.60484 v -13.96256 l 17.837443,-1.62488 v 12.70511 h 5.61089 v -13.24402 l 7.61435,-0.62872 c 1.19844,-0.0898 2.2032,-0.71855 2.2032,-1.26289 v -5.31285 c 0,-0.72399 -1.2045,-1.2629 -2.80847,-1.2629 h -0.39948 l -6.6096,0.62873 v -14.86346 l 7.61435,-0.62873"
-         id="path20-6-21-3-6"
-         style="opacity:0.672548;fill:#000000;fill-opacity:1;stroke:#35cfff;stroke-width:1.8;stroke-dasharray:none;stroke-dashoffset:9.6786;stroke-opacity:1;filter:url(#filter36-9-3-0)"
-         transform="matrix(1.373361,0,0,3.0160503,-20.877565,17.844819)" /></g><g
-       id="svg20-5-3"
-       transform="matrix(0.31995199,0,0,0.26145182,419.33846,227.21073)"><path
-         class="KeySig"
-         d="m 88.772287,50.243484 17.837443,-1.61944 v 14.86346 l -17.837443,1.71197 v -14.95599 m 31.062683,-2.7898 c 1.19844,-0.0898 2.2032,-0.72398 2.2032,-1.26289 v -5.31557 c 0,-0.71854 -1.2045,-1.26017 -2.80847,-1.26017 h -0.39948 l -6.6096,0.63145 v -13.42366 h -5.61089 v 13.96256 l -17.837443,1.61944 v -12.69695 h -5.60484 v 13.2413 l -7.81409,0.71854 c -1.19844,0.0898 -2.2032,0.72127 -2.2032,1.26562 v 5.22031 c 0,0.72398 1.2045,1.26289 2.80848,1.26289 h 0.59922 l 6.60959,-0.62873 v 14.86346 l -7.81409,0.71855 c -1.19844,0.0898 -2.2032,0.72398 -2.2032,1.26289 v 5.22303 c 0,0.72398 1.2045,1.26289 2.80848,1.26289 h 0.59922 l 6.60959,-0.62872 v 13.42093 h 5.60484 v -13.96256 l 17.837443,-1.62488 v 12.70511 h 5.61089 v -13.24402 l 7.61435,-0.62872 c 1.19844,-0.0898 2.2032,-0.71855 2.2032,-1.26289 v -5.31285 c 0,-0.72399 -1.2045,-1.2629 -2.80847,-1.2629 h -0.39948 l -6.6096,0.62873 v -14.86346 l 7.61435,-0.62873"
-         id="path20-6-21-3-6-0"
-         style="opacity:0.672548;fill:#000000;fill-opacity:1;stroke:#35cfff;stroke-width:1.8;stroke-dasharray:none;stroke-dashoffset:9.6786;stroke-opacity:1;filter:url(#filter36-9-3-0-3)"
-         transform="matrix(1.373361,0,0,3.0160503,-20.877565,17.844819)" /></g><g
-       id="svg20-5-0"
-       transform="matrix(0.31995199,0,0,0.26145182,534.33846,230.21073)"><path
-         class="KeySig"
-         d="m 88.772287,50.243484 17.837443,-1.61944 v 14.86346 l -17.837443,1.71197 v -14.95599 m 31.062683,-2.7898 c 1.19844,-0.0898 2.2032,-0.72398 2.2032,-1.26289 v -5.31557 c 0,-0.71854 -1.2045,-1.26017 -2.80847,-1.26017 h -0.39948 l -6.6096,0.63145 v -13.42366 h -5.61089 v 13.96256 l -17.837443,1.61944 v -12.69695 h -5.60484 v 13.2413 l -7.81409,0.71854 c -1.19844,0.0898 -2.2032,0.72127 -2.2032,1.26562 v 5.22031 c 0,0.72398 1.2045,1.26289 2.80848,1.26289 h 0.59922 l 6.60959,-0.62873 v 14.86346 l -7.81409,0.71855 c -1.19844,0.0898 -2.2032,0.72398 -2.2032,1.26289 v 5.22303 c 0,0.72398 1.2045,1.26289 2.80848,1.26289 h 0.59922 l 6.60959,-0.62872 v 13.42093 h 5.60484 v -13.96256 l 17.837443,-1.62488 v 12.70511 h 5.61089 v -13.24402 l 7.61435,-0.62872 c 1.19844,-0.0898 2.2032,-0.71855 2.2032,-1.26289 v -5.31285 c 0,-0.72399 -1.2045,-1.2629 -2.80847,-1.2629 h -0.39948 l -6.6096,0.62873 v -14.86346 l 7.61435,-0.62873"
-         id="path20-6-21-3-6-7"
-         style="opacity:0.672548;fill:#000000;fill-opacity:1;stroke:#35cfff;stroke-width:1.8;stroke-dasharray:none;stroke-dashoffset:9.6786;stroke-opacity:1;filter:url(#filter36-9-3-0-1)"
-         transform="matrix(1.373361,0,0,3.0160503,-20.877565,17.844819)" /></g><g
-       id="svg20-5-2"
-       transform="matrix(0.31995199,0,0,0.26145182,649.33846,231.21073)"><path
-         class="KeySig"
-         d="m 88.772287,50.243484 17.837443,-1.61944 v 14.86346 l -17.837443,1.71197 v -14.95599 m 31.062683,-2.7898 c 1.19844,-0.0898 2.2032,-0.72398 2.2032,-1.26289 v -5.31557 c 0,-0.71854 -1.2045,-1.26017 -2.80847,-1.26017 h -0.39948 l -6.6096,0.63145 v -13.42366 h -5.61089 v 13.96256 l -17.837443,1.61944 v -12.69695 h -5.60484 v 13.2413 l -7.81409,0.71854 c -1.19844,0.0898 -2.2032,0.72127 -2.2032,1.26562 v 5.22031 c 0,0.72398 1.2045,1.26289 2.80848,1.26289 h 0.59922 l 6.60959,-0.62873 v 14.86346 l -7.81409,0.71855 c -1.19844,0.0898 -2.2032,0.72398 -2.2032,1.26289 v 5.22303 c 0,0.72398 1.2045,1.26289 2.80848,1.26289 h 0.59922 l 6.60959,-0.62872 v 13.42093 h 5.60484 v -13.96256 l 17.837443,-1.62488 v 12.70511 h 5.61089 v -13.24402 l 7.61435,-0.62872 c 1.19844,-0.0898 2.2032,-0.71855 2.2032,-1.26289 v -5.31285 c 0,-0.72399 -1.2045,-1.2629 -2.80847,-1.2629 h -0.39948 l -6.6096,0.62873 v -14.86346 l 7.61435,-0.62873"
-         id="path20-6-21-3-6-2"
-         style="opacity:0.672548;fill:#000000;fill-opacity:1;stroke:#35cfff;stroke-width:1.8;stroke-dasharray:none;stroke-dashoffset:9.6786;stroke-opacity:1;filter:url(#filter36-9-3-0-8)"
-         transform="matrix(1.373361,0,0,3.0160503,-20.877565,17.844819)" /></g></g><path
+         y="315.89825">SOL   RE   LA   Mİ   Sİ</tspan></text></g><path
      class="KeySig"
      d="m 88.772287,50.243484 17.837443,-1.61944 v 14.86346 l -17.837443,1.71197 v -14.95599 m 31.062683,-2.7898 c 1.19844,-0.0898 2.2032,-0.72398 2.2032,-1.26289 v -5.31557 c 0,-0.71854 -1.2045,-1.26017 -2.80847,-1.26017 h -0.39948 l -6.6096,0.63145 v -13.42366 h -5.61089 v 13.96256 l -17.837443,1.61944 v -12.69695 h -5.60484 v 13.2413 l -7.81409,0.71854 c -1.19844,0.0898 -2.2032,0.72127 -2.2032,1.26562 v 5.22031 c 0,0.72398 1.2045,1.26289 2.80848,1.26289 h 0.59922 l 6.60959,-0.62873 v 14.86346 l -7.81409,0.71855 c -1.19844,0.0898 -2.2032,0.72398 -2.2032,1.26289 v 5.22303 c 0,0.72398 1.2045,1.26289 2.80848,1.26289 h 0.59922 l 6.60959,-0.62872 v 13.42093 h 5.60484 v -13.96256 l 17.837443,-1.62488 v 12.70511 h 5.61089 v -13.24402 l 7.61435,-0.62872 c 1.19844,-0.0898 2.2032,-0.71855 2.2032,-1.26289 v -5.31285 c 0,-0.72399 -1.2045,-1.2629 -2.80847,-1.2629 h -0.39948 l -6.6096,0.62873 v -14.86346 l 7.61435,-0.62873"
      id="path20-6-21-3"
@@ -8941,16 +8913,167 @@
 <button class="click g" data-planet="G" aria-label="SOL gezegeni"></button><button class="click d" data-planet="D" aria-label="RE gezegeni"></button><button class="click a" data-planet="A" aria-label="LA gezegeni"></button><button class="click e" data-planet="E" aria-label="Mİ gezegeni"></button><button class="click b" data-planet="B" aria-label="Sİ gezegeni"></button>
 </div><div class="status"><div id="message">Bir gezegen adına tıklayın.<span class="hint">Parlayan siyahları ve renkli kardeşleri izle.</span></div><button class="reset" id="reset">Sıfırla</button></div></div>
 <script>
-const rules={G:{label:'SOL',nums:[1],active:['B','C','E'],bothBC:true},D:{label:'RE',nums:[1,2],active:['B','E']},A:{label:'LA',nums:[1,2,3],active:['B','E']},E:{label:'Mİ',nums:[1,2,3,4],active:['B','E']},B:{label:'Sİ',nums:[1,2,3,4,5],active:['B','E']}};
-const svg=document.querySelector('.stage > svg');
-const bcSleeper=svg.querySelector('#g15-7'), bcAwake=svg.querySelector('#g28-0'), efAwake=svg.querySelector('#g28');
-[bcAwake,efAwake].forEach(x=>x&&x.classList.add('awake-person'));
-let bcRightAwake=null;
-if(bcAwake&&bcSleeper){bcRightAwake=bcAwake.cloneNode(true);bcRightAwake.id='bc-right-awake-clone';bcRightAwake.setAttribute('transform','translate(639.04513,210)');bcRightAwake.style.display='none';bcRightAwake.classList.add('awake-person');bcSleeper.parentNode.insertBefore(bcRightAwake,bcSleeper.nextSibling)}
-const buttons=[...document.querySelectorAll('.click')], glows=[...document.querySelectorAll('.glow')], tags=[...document.querySelectorAll('.face-tag')], message=document.getElementById('message');
-function resetTwins(){if(bcSleeper)bcSleeper.style.display='inline';if(bcRightAwake)bcRightAwake.style.display='none';document.querySelectorAll('.wake-pop').forEach(x=>x.classList.remove('wake-pop'))}
-function clearAll(){buttons.forEach(x=>x.classList.remove('active'));glows.forEach(x=>x.classList.remove('on'));tags.forEach(x=>x.classList.remove('active'));resetTwins()}
-function animateAwake(el,delay){if(!el)return;setTimeout(()=>{el.classList.remove('wake-pop');void el.getBBox();el.classList.add('wake-pop')},delay)}
-function selectPlanet(key,button){clearAll();button.classList.add('active');const r=rules[key];r.nums.forEach((n,i)=>setTimeout(()=>document.querySelector(`[data-num="${n}"]`).classList.add('on'),i*170));const delay=r.nums.length*170+80;if(r.bothBC){setTimeout(()=>{bcSleeper.style.display='none';bcRightAwake.style.display='inline';animateAwake(bcRightAwake,0)},delay)}r.active.forEach((note,i)=>setTimeout(()=>document.querySelector(`[data-note="${note}"]`).classList.add('active'),delay+i*90));animateAwake(bcAwake,delay);animateAwake(efAwake,delay+100);message.innerHTML=`<span>${r.label}</span><span class="hint">Siyah yapı taşları: ${r.nums.join('–')} · Renkli kardeşler basılır.</span>`}
-buttons.forEach(btn=>btn.addEventListener('click',()=>selectPlanet(btn.dataset.planet,btn)));document.getElementById('reset').addEventListener('click',()=>{clearAll();message.innerHTML='Bir gezegen adına tıklayın.<span class="hint">Parlayan siyahları ve renkli kardeşleri izle.</span>'});
+/*
+==========================================================
+  ME-005 — DİYEZ GEZEGENLERİ
+  KOLAY EDİT BÖLÜMÜ
+
+  Bir gezegenin davranışını değiştirmek için sadece
+  PLANETS bölümünü düzenle.
+
+  nums   = siyah yapı taşı numaraları
+  active = uyanık ikizlerin isimleri
+  label  = gezegen adı
+
+  İkizler:
+    SOL: E uyanık / F uyur
+    RE, LA, Mİ, Sİ: E uyanık / F uyur
+    B/C çifti de aynı mantıkla active listesine göre çalışır.
+==========================================================
+*/
+
+const PLANETS = {
+  G: { label: 'SOL', nums: [1],         active: ['B','C','E'] },
+  D: { label: 'RE',  nums: [1,2],       active: ['B','E'] },
+  A: { label: 'LA',  nums: [1,2,3],     active: ['B','E'] },
+  E: { label: 'Mİ',  nums: [1,2,3,4],   active: ['B','E'] },
+  B: { label: 'Sİ',  nums: [1,2,3,4,5], active: ['B','E'] }
+};
+
+/* ========================================================
+   SİSTEM — NORMALDE BURAYI DEĞİŞTİRMENE GEREK YOK
+======================================================== */
+
+const svg = document.querySelector('.stage > svg');
+const buttons = [...document.querySelectorAll('.click')];
+const glows = [...document.querySelectorAll('.glow')];
+const tags = [...document.querySelectorAll('.face-tag')];
+const message = document.getElementById('message');
+
+/*
+  Çizimdeki iki gerçek ikiz konumu:
+    sol çift  → E / F
+    sağ çift  → B / C
+
+  SVG'de hazır bulunan:
+    g28    = sol uyanık
+    g15    = sağ uyuyan
+    g28-0  = sağ uyanık
+    g15-7  = sağ uyuyan
+
+  Sol taraftaki F için sağdaki uyuyan karakteri
+  aynı görünümle sola kopyalıyoruz.
+*/
+const leftAwake  = svg.querySelector('#g28');
+const rightAwake = svg.querySelector('#g28-0');
+const rightSleep = svg.querySelector('#g15-7') || svg.querySelector('#g15');
+
+let leftSleep = null;
+
+if (rightSleep) {
+  leftSleep = rightSleep.cloneNode(true);
+  leftSleep.id = 'left-F-sleeper';
+  leftSleep.setAttribute('transform', 'translate(245.43468,210)');
+  leftSleep.style.display = 'none';
+  rightSleep.parentNode.insertBefore(leftSleep, rightSleep);
+}
+
+function resetTwins() {
+  if (leftAwake)  leftAwake.style.display = 'inline';
+  if (rightAwake) rightAwake.style.display = 'inline';
+  if (rightSleep) rightSleep.style.display = 'inline';
+  if (leftSleep)  leftSleep.style.display = 'none';
+
+  document.querySelectorAll('.wake-pop')
+    .forEach(x => x.classList.remove('wake-pop'));
+}
+
+function clearAll() {
+  buttons.forEach(x => x.classList.remove('active'));
+  glows.forEach(x => x.classList.remove('on'));
+  tags.forEach(x => x.classList.remove('active'));
+  resetTwins();
+}
+
+function animateAwake(el, delay = 0) {
+  if (!el) return;
+
+  setTimeout(() => {
+    el.classList.remove('wake-pop');
+    void el.getBBox();
+    el.classList.add('wake-pop');
+  }, delay);
+}
+
+function setTwinState(active) {
+  const E = active.includes('E');
+  const F = active.includes('F');
+  const B = active.includes('B');
+  const C = active.includes('C');
+
+  /*
+    SOL ÇİFTİ: E / F
+  */
+  if (leftAwake) leftAwake.style.display = E ? 'inline' : 'none';
+  if (leftSleep) leftSleep.style.display = F ? 'inline' : 'none';
+
+  /*
+    SAĞ ÇİFTİ: B / C
+  */
+  if (rightAwake) rightAwake.style.display = B ? 'inline' : 'none';
+  if (rightSleep) rightSleep.style.display = C ? 'inline' : 'none';
+
+  /*
+    Uyanan çocukların küçük animasyonu
+  */
+  const map = { E: leftAwake, F: leftSleep, B: rightAwake, C: rightSleep };
+
+  active.forEach((note, i) => {
+    animateAwake(map[note], i * 100);
+  });
+}
+
+function selectPlanet(key, button) {
+  clearAll();
+
+  const planet = PLANETS[key];
+  if (!planet) return;
+
+  button.classList.add('active');
+
+  planet.nums.forEach((num, i) => {
+    setTimeout(() => {
+      const glow = document.querySelector(`[data-num="${num}"]`);
+      if (glow) glow.classList.add('on');
+    }, i * 170);
+  });
+
+  const delay = planet.nums.length * 170 + 80;
+
+  planet.active.forEach((note, i) => {
+    setTimeout(() => {
+      const tag = document.querySelector(`[data-note="${note}"]`);
+      if (tag) tag.classList.add('active');
+    }, delay + i * 90);
+  });
+
+  setTimeout(() => setTwinState(planet.active), delay);
+
+  message.innerHTML =
+    `<span>${planet.label}</span>` +
+    `<span class="hint">Siyah yapı taşları: ${planet.nums.join('–')} · Renkli kardeşler basılır.</span>`;
+}
+
+buttons.forEach(button => {
+  button.addEventListener('click', () =>
+    selectPlanet(button.dataset.planet, button)
+  );
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+  clearAll();
+  message.innerHTML =
+    'Bir gezegen adına tıklayın.' +
+    '<span class="hint">Parlayan siyahları ve renkli kardeşleri izle.</span>';
+});
 </script></body></html>
