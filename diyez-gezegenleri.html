@@ -8951,59 +8951,45 @@ const tags = [...document.querySelectorAll('.face-tag')];
 const message = document.getElementById('message');
 
 /*
-  Çizimdeki iki gerçek ikiz konumu:
-    sol çift  → E / F
-    sağ çift  → B / C
+  SVG'deki GERÇEK ikiz eşleşmeleri:
 
-  SVG'de hazır bulunan:
-    g28    = sol uyanık
-    g15    = sağ uyuyan
-    g28-0  = sağ uyanık
-    g15-7  = sağ uyuyan
+  SOL ÇİFTİ  → E / F
+  SAĞ ÇİFTİ  → B / C
 
-  Sol taraftaki F için sağdaki uyuyan karakteri
-  aynı görünümle sola kopyalıyoruz.
+  g28-0 = E'nin uyanık hali
+  g15-7 = F'nin uyuyan hali
+
+  g28   = B'nin uyanık hali
+  g15   = C'nin uyuyan hali
+
+  Yani dört ikiz SVG'de zaten hazır.
+  Sadece C'nin ayrıca uyanık bir kopyasını oluşturuyoruz.
 */
-const leftAwake  = svg.querySelector('#g28');
-const rightAwake = svg.querySelector('#g28-0');
-const rightSleep = svg.querySelector('#g15-7') || svg.querySelector('#g15');
+const leftAwake  = svg.querySelector('#g28-0'); // E
+const leftSleep  = svg.querySelector('#g15-7'); // F
+const rightAwake = svg.querySelector('#g28');   // B
+const rightSleep = svg.querySelector('#g15');   // C
 
-let leftSleep = null;
-
-if (rightSleep) {
-  leftSleep = rightSleep.cloneNode(true);
-  leftSleep.id = 'left-F-sleeper';
-  leftSleep.setAttribute('transform', 'translate(245.43468,210)');
-  leftSleep.style.display = 'none';
-  rightSleep.parentNode.insertBefore(leftSleep, rightSleep);
-}
-
+/* C'nin uyanık hali: B'nin uyanık çizimini C'nin konumuna kopyala */
 let rightCawake = null;
 
 if (rightAwake && rightSleep) {
   rightCawake = rightAwake.cloneNode(true);
   rightCawake.id = 'right-C-awake';
-
-  // C'nin uyanık görüntüsünü,
-  // mevcut C'nin (uyuyan görüntünün) bulunduğu yere taşı
-  const cTransform = rightSleep.getAttribute('transform');
-
-  if (cTransform) {
-    rightCawake.setAttribute('transform', cTransform);
-  }
-
+  rightCawake.setAttribute('transform', rightSleep.getAttribute('transform'));
   rightCawake.style.display = 'none';
 
   rightSleep.parentNode.insertBefore(rightCawake, rightSleep);
 }
 
-   
 function resetTwins() {
+  /* Dört gerçek ikiz her zaman görünür */
   if (leftAwake)  leftAwake.style.display = 'inline';
+  if (leftSleep)  leftSleep.style.display = 'inline';
   if (rightAwake) rightAwake.style.display = 'inline';
   if (rightSleep) rightSleep.style.display = 'inline';
-  if (leftSleep)  leftSleep.style.display = 'inline';
 
+  /* C'nin uyanık kopyası başlangıçta kapalı */
   if (rightCawake) rightCawake.style.display = 'none';
 
   document.querySelectorAll('.wake-pop')
@@ -9034,56 +9020,36 @@ function setTwinState(active) {
   const E = active.includes('E');
 
   /*
-  ==========================================================
-  SOL ÇİFTİ: E / F
+    DÖRT İKİZ DE HER ZAMAN GÖRÜNÜR.
 
-  E uyanık
-  F uyuyan
-
-  İkisi de her zaman görünür.
-  ==========================================================
+    G / SOL → B, C, E uyanık; F uyuyor
+    D / RE  → B, E uyanık; C, F uyuyor
+    A / LA  → B, E uyanık; C, F uyuyor
+    E / Mİ  → B, E uyanık; C, F uyuyor
+    B / Sİ  → B, E uyanık; C, F uyuyor
   */
 
-  if (leftAwake) {
-    leftAwake.style.display = 'inline';
-  }
+  /* E / F */
+  if (leftAwake) leftAwake.style.display = 'inline'; // E uyanık
+  if (leftSleep) leftSleep.style.display = 'inline'; // F uyuyan
 
-  if (leftSleep) {
-    leftSleep.style.display = 'inline';
-  }
+  /* B */
+  if (rightAwake) rightAwake.style.display = 'inline'; // B uyanık
 
   /*
-  ==========================================================
-  SAĞ ÇİFTİ: B / C
-
-  B uyanıksa → B uyanık görüntüsü
-  B değilse  → B uyuyan görüntüsü
-
-  C uyanıksa → C uyanık görüntüsü
-  C değilse  → C uyuyan görüntüsü
-
-  İKİSİ DE HER ZAMAN GÖRÜNÜR.
-  ==========================================================
+    C:
+    aktifse  → uyuyan C gizlenir, uyanık C gösterilir
+    değilse  → uyanık C gizlenir, uyuyan C gösterilir
   */
-
-  if (rightAwake) {
-    rightAwake.style.display = B ? 'inline' : 'none';
+  if (C) {
+    if (rightSleep)  rightSleep.style.display = 'none';
+    if (rightCawake) rightCawake.style.display = 'inline';
+  } else {
+    if (rightSleep)  rightSleep.style.display = 'inline';
+    if (rightCawake) rightCawake.style.display = 'none';
   }
 
-  if (rightSleep) {
-    rightSleep.style.display = 'inline';
-  }
-
-  if (rightCawake) {
-    rightCawake.style.display = C ? 'inline' : 'none';
-  }
-
-  /*
-  ==========================================================
-  UYANANLARIN ANİMASYONU
-  ==========================================================
-  */
-
+  /* Uyanık çocukların küçük animasyonu */
   const map = {
     E: leftAwake,
     B: rightAwake,
@@ -9094,6 +9060,7 @@ function setTwinState(active) {
     animateAwake(map[note], i * 100);
   });
 }
+
 function selectPlanet(key, button) {
   clearAll();
 
