@@ -9014,7 +9014,7 @@ function setTwinState(active) {
   SOL ÇİFTİ: E / F
 
   E her zaman uyanık
-  F her zaman uyuyor
+  F her zaman uyuyan
   */
 
   if (leftAwake) {
@@ -9028,9 +9028,8 @@ function setTwinState(active) {
   /*
   SAĞ ÇİFTİ: B / C
 
-  B aktifse uyanık
-  C aktifse uyanık
-  Aktif olmayan sağ ikiz uyuyan görünümünde kalır.
+  B ve C her zaman görünür.
+  Aktif olan uyanık, aktif olmayan uyuyan.
   */
 
   if (rightAwake) {
@@ -9042,7 +9041,7 @@ function setTwinState(active) {
   }
 
   /*
-  Uyanık olanların animasyonu
+  Uyanık çocukların animasyonu
   */
 
   const map = {
