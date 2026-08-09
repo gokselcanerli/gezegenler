@@ -18,14 +18,6 @@
 .awake-person{transition:filter .3s,opacity .3s} .wake-pop{animation:wakePop .55s ease both}
 .status{margin-top:12px;min-height:58px;padding:12px 16px;border-radius:14px;background:#fff;box-shadow:0 4px 16px #0002;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:700}
 .status span{color:#075f8e} .hint{font-weight:500;color:#555;font-size:.92em;margin-left:8px} .reset{border:0;padding:9px 14px;border-radius:10px;background:#222;color:#fff;cursor:pointer;font-weight:700}
-.planet-key{
-    opacity:.55;
-    transition:opacity:.25s;
-}
-
-.planet-key.active{
-    opacity:1;
-}
 @keyframes pulse{from{filter:brightness(1)}to{filter:brightness(1.5)}}
 @keyframes wakePop{0%,100%{filter:drop-shadow(0 0 5px #45dfff) brightness(1)}18%{filter:drop-shadow(-2px 0 7px #45dfff) brightness(1.08)}36%{filter:drop-shadow(2px 0 8px #45dfff) brightness(1.13)}54%{filter:drop-shadow(-1px 0 7px #45dfff) brightness(1.08)}72%{filter:drop-shadow(1px 0 6px #45dfff) brightness(1.04)}}
 @media(max-width:600px){.status{font-size:14px}.face-tag{width:21px;height:21px;font-size:11px}}
@@ -8947,25 +8939,12 @@ const PLANETS = {
   E: { label: 'Mİ',  nums: [1,2,3,4],   active: ['B','E'] },
   B: { label: 'Sİ',  nums: [1,2,3,4,5], active: ['B','E'] }
 };
-const KEY_MAP = {
-    1: 'Gb',
-    2: 'Ab',
-    3: 'Bb',
-    4: 'Db',
-    5: 'Eb'
-};
+
 /* ========================================================
    SİSTEM — NORMALDE BURAYI DEĞİŞTİRMENE GEREK YOK
 ======================================================== */
 
 const svg = document.querySelector('.stage > svg');
-const planetKeys = [...svg.querySelectorAll('[inkscape\\:label]')]
-    .filter(el => {
-        const label = el.getAttribute('inkscape:label');
-        return ['Gb','Ab','Bb','Db','Eb'].includes(label);
-    });
-
-planetKeys.forEach(key => key.classList.add('planet-key'));
 const buttons = [...document.querySelectorAll('.click')];
 const glows = [...document.querySelectorAll('.glow')];
 const tags = [...document.querySelectorAll('.face-tag')];
@@ -9083,22 +9062,10 @@ function setTwinState(active) {
 }
 
 function selectPlanet(key, button) {
-clearAll();
+  clearAll();
 
-planetKeys.forEach(x => x.classList.remove('active'));
-planet.nums.forEach(num => {
-    const label = KEY_MAP[num];
-
-    const keyElement = planetKeys.find(
-        el => el.getAttribute('inkscape:label') === label
-    );
-
-    if (keyElement) {
-        keyElement.classList.add('active');
-    }
-});
-const planet = PLANETS[key];
-if (!planet) return;
+  const planet = PLANETS[key];
+  if (!planet) return;
 
   button.classList.add('active');
 
