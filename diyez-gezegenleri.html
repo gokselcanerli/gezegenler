@@ -8978,11 +8978,23 @@ if (rightSleep) {
   rightSleep.parentNode.insertBefore(leftSleep, rightSleep);
 }
 
+let rightCawake = null;
+
+if (rightAwake) {
+  rightCawake = rightAwake.cloneNode(true);
+  rightCawake.id = 'right-C-awake';
+  rightCawake.style.display = 'none';
+  rightAwake.parentNode.insertBefore(rightCawake, rightAwake);
+}
+
+   
 function resetTwins() {
   if (leftAwake)  leftAwake.style.display = 'inline';
   if (rightAwake) rightAwake.style.display = 'inline';
   if (rightSleep) rightSleep.style.display = 'inline';
-  if (leftSleep)  leftSleep.style.display = 'none';
+  if (leftSleep)  leftSleep.style.display = 'inline';
+
+  if (rightCawake) rightCawake.style.display = 'none';
 
   document.querySelectorAll('.wake-pop')
     .forEach(x => x.classList.remove('wake-pop'));
@@ -9006,15 +9018,20 @@ function animateAwake(el, delay = 0) {
 }
 
 function setTwinState(active) {
-console.log(active);
+
   const B = active.includes('B');
   const C = active.includes('C');
+  const E = active.includes('E');
 
   /*
+  ==========================================================
   SOL ÇİFTİ: E / F
 
-  E her zaman uyanık
-  F her zaman uyuyan
+  E uyanık
+  F uyuyan
+
+  İkisi de her zaman görünür.
+  ==========================================================
   */
 
   if (leftAwake) {
@@ -9026,28 +9043,41 @@ console.log(active);
   }
 
   /*
+  ==========================================================
   SAĞ ÇİFTİ: B / C
 
-  B ve C her zaman görünür.
-  Aktif olan uyanık, aktif olmayan uyuyan.
+  B uyanıksa → B uyanık görüntüsü
+  B değilse  → B uyuyan görüntüsü
+
+  C uyanıksa → C uyanık görüntüsü
+  C değilse  → C uyuyan görüntüsü
+
+  İKİSİ DE HER ZAMAN GÖRÜNÜR.
+  ==========================================================
   */
 
   if (rightAwake) {
-    rightAwake.style.display = 'inline';
+    rightAwake.style.display = B ? 'inline' : 'none';
   }
 
   if (rightSleep) {
     rightSleep.style.display = 'inline';
   }
 
+  if (rightCawake) {
+    rightCawake.style.display = C ? 'inline' : 'none';
+  }
+
   /*
-  Uyanık çocukların animasyonu
+  ==========================================================
+  UYANANLARIN ANİMASYONU
+  ==========================================================
   */
 
   const map = {
     E: leftAwake,
     B: rightAwake,
-    C: rightSleep
+    C: rightCawake
   };
 
   active.forEach((note, i) => {
