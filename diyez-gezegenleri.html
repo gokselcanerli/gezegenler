@@ -8980,11 +8980,21 @@ if (rightSleep) {
 
 let rightCawake = null;
 
-if (rightAwake) {
+if (rightAwake && rightSleep) {
   rightCawake = rightAwake.cloneNode(true);
   rightCawake.id = 'right-C-awake';
+
+  // C'nin uyanık görüntüsünü,
+  // mevcut C'nin (uyuyan görüntünün) bulunduğu yere taşı
+  const cTransform = rightSleep.getAttribute('transform');
+
+  if (cTransform) {
+    rightCawake.setAttribute('transform', cTransform);
+  }
+
   rightCawake.style.display = 'none';
-  rightAwake.parentNode.insertBefore(rightCawake, rightAwake);
+
+  rightSleep.parentNode.insertBefore(rightCawake, rightSleep);
 }
 
    
