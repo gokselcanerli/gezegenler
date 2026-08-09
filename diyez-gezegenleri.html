@@ -9007,26 +9007,56 @@ function animateAwake(el, delay = 0) {
 
 function setTwinState(active) {
   const E = active.includes('E');
-  const F = active.includes('F');
   const B = active.includes('B');
   const C = active.includes('C');
 
   /*
-    SOL ÇİFTİ: E / F
+  ==========================================================
+  SOL ÇİFTİ: E / F
+
+  E aktifse  → E uyanık, F uyuyan
+  E pasifse  → E gizli, F uyuyan
+
+  F hiçbir zaman kaybolmaz.
+  ==========================================================
   */
-  if (leftAwake) leftAwake.style.display = E ? 'inline' : 'none';
-  if (leftSleep) leftSleep.style.display = F ? 'inline' : 'none';
+  if (leftAwake) {
+    leftAwake.style.display = E ? 'inline' : 'none';
+  }
+
+  if (leftSleep) {
+    leftSleep.style.display = 'inline';
+  }
 
   /*
-    SAĞ ÇİFTİ: B / C
+  ==========================================================
+  SAĞ ÇİFTİ: B / C
+
+  B aktif → B uyanık
+  B pasif → B gizli
+
+  C aktif → C uyanık
+  C pasif → C uyuyan
+
+  C hiçbir zaman kaybolmaz.
+  ==========================================================
   */
-  if (rightAwake) rightAwake.style.display = B ? 'inline' : 'none';
-  if (rightSleep) rightSleep.style.display = C ? 'inline' : 'none';
+  if (rightAwake) {
+    rightAwake.style.display = B ? 'inline' : 'none';
+  }
+
+  if (rightSleep) {
+    rightSleep.style.display = 'inline';
+  }
 
   /*
-    Uyanan çocukların küçük animasyonu
+  Uyanık çocukların küçük animasyonu
   */
-  const map = { E: leftAwake, F: leftSleep, B: rightAwake, C: rightSleep };
+  const map = {
+    E: leftAwake,
+    B: rightAwake,
+    C: rightSleep
+  };
 
   active.forEach((note, i) => {
     animateAwake(map[note], i * 100);
